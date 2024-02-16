@@ -1,4 +1,19 @@
+import java.util.Arrays;
+
 public class MergeSort{
+
+    public static void main(String[] args) {
+        int[] arrayToSort = {5, 3, 7, 2, 8, 4, 1, 6};
+        
+        System.out.println("Original Array:");
+        System.out.println(Arrays.toString(arrayToSort));
+
+        MergeSort.sort(arrayToSort, 0, arrayToSort.length - 1);
+
+        System.out.println("Sorted Array:");
+        System.out.println(Arrays.toString(arrayToSort));
+    }    
+
     static void merge(int a[], int p, int q, int r){
         int n1 = q - p + 1;
         int n2 = r - q;

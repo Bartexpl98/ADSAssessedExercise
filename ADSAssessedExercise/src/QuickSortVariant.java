@@ -1,17 +1,19 @@
+import java.util.Arrays;
+
 public class QuickSortVariant {
     public static void main(String[] args) {
-        int[] array = {5, 3, 7, 2, 8, 4, 1, 6,32,5,123,5,35,345,53452,62,253,4532,34};
-        int k = 5; // Set your desired threshold k
-        sort(array, 0, array.length - 1, k);
+        int[] arrayToSort = {5, 3, 7, 2, 8, 4, 1, 6,32,5,123,5,35,345,53452,62,253,4532,34};
+        int k = 10; 
 
-        // Print sorted array
+        System.out.println("Original Array:");
+        System.out.println(Arrays.toString(arrayToSort));
+
+        sort(arrayToSort, 0, arrayToSort.length - 1, k);
+
         System.out.println("Sorted Array:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
+        System.out.println(Arrays.toString(arrayToSort));
     }
 
-    // Variant of Quicksort with INSERTION-SORT for small subarrays
     public static void sort(int[] array, int p, int r, int k) {
         if (r - p + 1 > k) {
             int q = partition(array, p, r);
@@ -24,7 +26,6 @@ public class QuickSortVariant {
         }
     }
 
-    // Partition procedure for Quicksort
     public static int partition(int[] array, int p, int r) {
         int x = array[r]; // Pivot element (right-most element)
         int i = p - 1;
@@ -36,11 +37,10 @@ public class QuickSortVariant {
             }
         }
 
-        swap(array, i + 1, r); // Place the pivot in its correct position
+        swap(array, i + 1, r);
         return i + 1;
     }
 
-    // INSERTION-SORT algorithm
     public static void insertionSort(int[] array, int p, int r) {
         for (int i = p + 1; i <= r; i++) {
             int key = array[i];
@@ -55,7 +55,6 @@ public class QuickSortVariant {
         }
     }
 
-    // Helper method to swap elements in an array
     public static void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];
