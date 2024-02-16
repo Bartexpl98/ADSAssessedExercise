@@ -43,15 +43,15 @@ public class QuickSortVariant {
 
     public static void insertionSort(int[] array, int p, int r) {
         for (int i = p + 1; i <= r; i++) {
-            int key = array[i];
+            int k = array[i];
             int j = i - 1;
 
-            while (j >= p && array[j] > key) {
+            while (j >= p && array[j] > k) {
                 array[j + 1] = array[j];
                 j--;
             }
 
-            array[j + 1] = key;
+            array[j + 1] = k;
         }
     }
 

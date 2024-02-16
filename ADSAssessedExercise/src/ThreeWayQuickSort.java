@@ -18,6 +18,7 @@ public class ThreeWayQuickSort {
         if (p < r) {
             // Choose the pivot element
             int pivot = array[p + (r - p) / 2];
+            System.out.println(pivot);
 
             int[] indices = partitionThreeWay(array, p, r, pivot);
             int q1 = indices[0];

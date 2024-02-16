@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class MergeSort{
 
     public static void main(String[] args) {
-        int[] arrayToSort = {5, 3, 7, 2, 8, 4, 1, 6};
+        int[] arrayToSort = {5, 33, 7, 21, 452, 133, 6242,51,32};
         
         System.out.println("Original Array:");
         System.out.println(Arrays.toString(arrayToSort));
@@ -14,36 +14,40 @@ public class MergeSort{
         System.out.println(Arrays.toString(arrayToSort));
     }    
 
-    static void merge(int a[], int p, int q, int r){
-        int n1 = q - p + 1;
-        int n2 = r - q;
-        int[] L = new int[n1 + 1];
-        int[] R = new int[n2 + 1];
+    static void merge(int a[], int left, int mid, int right){
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+       
+        int[] leftArray = new int[n1 + 1];
+        int[] rightArray = new int[n2 + 1];
         
+       
         for (int i=0; i<n1; i++)
-            L[i] = a[p + i];
+            leftArray[i] = a[left + i];
         for (int j=0; j<n2; j++)
-            R[j] = a[q + 1+ j];
-        L[n1] = Integer.MAX_VALUE;
-        R[n2] = Integer.MAX_VALUE;
+            rightArray[j] = a[mid + 1+ j];
+       
+        leftArray[n1] = Integer.MAX_VALUE;
+        rightArray[n2] = Integer.MAX_VALUE;
+    
         int i = 0;
         int j = 0;
-        for (int k=p; k<= r; k++){
-            if(L[i] <= R[j]){
-                a[k] = L[i];
+        for (int k=left; k<= right; k++){
+            if(leftArray[i] <= rightArray[j]){
+                a[k] = leftArray[i];
                 i++;
             }
             else{
-                a[k] = R[j];
+                a[k] = rightArray[j];
                 j++;}
             }
 }
 
-    public static void sort(int a[], int p, int r){
-        if (p < r){
-            int q = (p+r)/2;
-            sort(a, p, q);
-            sort(a , q+1, r);
-            merge(a, p, q, r);}
+    public static void sort(int[] array, int left, int right){
+        if (left < right){
+            int mid = (left+right)/2;
+            sort(array, left, mid);
+            sort(array , mid+1, right);
+            merge(array, left, mid, right);}
 }
 }
